@@ -1,0 +1,33 @@
+name: Self Hosted Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  self-hosted-job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Runner Details
+        run: |
+          hostname
+          whoami
+
+      - name: Test Message
+        run: echo "Self Hosted Runner Working Successfully"
+
+      - name: List Files
+        run: dir
+
+      - name: Build Step
+        run: echo "Build Completed"
+
+      - name: Deploy Step
+        run: echo "Deployment Completed"
